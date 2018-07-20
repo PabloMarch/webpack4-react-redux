@@ -45,6 +45,7 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new CleanWebPackPlugin(PATHS.outputPath, {
+      root: process.cwd(),
       verbose: true,
       dry: false
     }),
