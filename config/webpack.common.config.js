@@ -55,7 +55,7 @@ const config = {
     ]
   },
   plugins: [
-    // new webpack.ProgressPlugin(),
+    new webpack.ProgressPlugin(),
     new HtmlWebPackPlugin({
       template: PATHS.template,
       favicon: PATHS.favicon,
