@@ -1,4 +1,4 @@
-# webpack4-react-redux
+# Webpack 4 - React-Redux
 ### Starting project with minimal config
 
 - version: 1.0.0
