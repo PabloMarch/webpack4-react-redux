@@ -17,11 +17,20 @@ const config = {
     modules: true,
     children: true,
   },
+  recordsPath: PATHS.recordsPath,
   optimization: {
+    runtimeChunk: {
+      name: "manifest",
+    },
     splitChunks: {
-      name: 'vendor',
-      minChunks: 3,
-      filename: 'vendor.bundle.js',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          enforce: true,
+          chunks: 'all'
+        }
+      }
     },
     minimizer: [
       new UglifyJsPlugin({
@@ -42,7 +51,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('prod')
     }),
     new CleanWebPackPlugin(PATHS.outputPath, {
       root: process.cwd(),
@@ -54,7 +63,7 @@ const config = {
       debug: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'app.bundle.css',
+      filename: 'app.bundle.[chunkhash].css'
     }),
   ]
 };

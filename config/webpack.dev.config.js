@@ -1,4 +1,3 @@
-// const webpack = require('webpack');
 const PATHS = require('./paths');
 
 const config = {

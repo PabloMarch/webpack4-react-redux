@@ -4,8 +4,8 @@
   "description": "Starting project with minimal config",
   "main": "index.ejs",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=development webpack-dev-server"
+    "build": "cross-env NODE_ENV=prod webpack",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,6 @@
   ],
   "author": "Pablo Marchena",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
-  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

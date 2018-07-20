@@ -1,7 +1,12 @@
 {
   "presets": [
-    "env",
     "react",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }],
     "stage-2"
-  ]
+  ],
+  "comments": true
 }

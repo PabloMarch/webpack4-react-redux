@@ -2,25 +2,28 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PATHS = require('./paths');
+const pkg = require('../package.json');
 
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.NODE_ENV !== 'prod';
 
 const config = {
   entry: {
-    vendor: ['react', 'react-dom'],
+    vendor: Object.keys(pkg.dependencies),
     app: './app/index.js'
   },
   output: {
     path: PATHS.outputPath,
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.[chunkhash].js',
+    chunkFilename: '[name].bundle.[chunkhash].js'
   },
   resolve: {
-    modules: [ 'app', 'node_modules', 'components', './' ]
+    modules: [ 'app', 'node_modules', 'components', './' ],
+    extensions: ['*', '.js', '.jsx']
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         enforce: 'pre',
         exclude: /node_modules/,
         include: PATHS.app,
